@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0"/>
+  <title>DemoApps</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+
+<script>
+
+
+$(function(){
+$.ajax({
+url: "/js/json.json",
+      dataType: 'json',
+        type: 'GET',
+ success: function(result){
+ $.each(result,function(key,item){
+ var id=item["time"].split(" ")[0].split(":")[0]
+    var $html='<div class="container_blk"><div class="content"><div class="email"><p>'+item["handle"]+'</p></div><div class="right_block"><div class="common"><span class="date">'+item["date"]+'</span><span class="time"><span class="squre"></span> <span  class="date_con" id=div'+id+'>'+ item["time"]+'</span></span></div><div class="common"><p><span class="count" id=div'+item["score"]+'>'+item["score"]+'</span> '+item["comment"]+' </p></div><div class="common"><div class="split_con"><div class="circle"><div class="circle_con"><span><i></i></span>Email</div><div class="circle_con"> <span><i></i></span>sms</div></div></div><div class="message">message</div></div></div></div></div>'
+   $(".main_block").append($html);
+    });
+    }
+});
+
+
+$("#time").click(function(){
+var arr=[],arr1=[];
+
+$(".container_blk .date_con").each(function(key,val){
+arr.push($(val).html());
+});
+
+
+arr.sort(function (a, b) {
+  return new Date('1970/01/01 ' + a) - new Date('1970/01/01 ' + b);
+});
+
+	
+console.log(arr)
+$.each(arr,function(key,val){
+arr1.push(val.split(" ")[0].split(":")[0]);
+});
+
+$.each(arr1,function(index,value){
+   $('.main_block').append($('#div'+value).parents(".container_blk"));
+});
+});
+
+
+
+
+var $divs = $("div.container_blk");
+$('#score').on('click', function () {
+ var arr=[];
+    $(".count").each(function(a,b){
+
+    arr.push(parseInt($(b).text()))
+    });
+    arr.sort(function(a, b){return b-a});
+$.each(arr,function(index,value){
+   $('.main_block').append($('#div'+value).parents(".container_blk"));
+});
+});
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+@import 'theme';
+*{padding:0px;margin:0px}
+.container { margin: 0px auto;
+  max-width: 1024px;
+  clear: both;
+}
+.wrapper {
+  font-family: arial;
+
+}
+@mixin common{
+  @include left;
+  width: 100%;
+}
+
+@mixin rotate($rotate){
+  -webkit-transform: rotate($rotate);
+  -moz-transform: rotate($rotate);
+  -o-transform: rotate($rotate);
+  -ms-transform: rotate($rotate);
+  transform: rotate($rotate);
+}
+@mixin left{
+  float: left;
+
+}
+@mixin radius($ra){
+  -moz-border-radius: $ra;
+  -webkit-border-radius: $ra;
+  border-radius: $ra;
+}
+.sort{margin:15px 0px;
+  ul li{
+  input{
+    margin-right:3px;
+  }
+    @include left;
+  list-style: none;
+  margin-right: 20px;
+  color:$color1;
+}}
+.form_blk,.sort,.content,.common,.right_block  {@include common;}
+.content {position: relative;background:$bg2;margin-bottom: 20px;border: 2px solid $black;
+  padding: 10px;box-sizing: border-box;
+.email{    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+  p{@include left;@include rotate(-90deg);  background: $bg1;
+  color: $white;
+      position:absolute;
+    top:0;
+    bottom:0;
+    height:2em;
+	    -moz-transform-origin: 0 50%;
+    -moz-transform: rotate(-90deg) translate(-68%, 50%);
+    -webkit-transform-origin: 0 50%;
+    -webkit-transform: rotate(-90deg) translate(-68%, 50%);
+    -o-transform-origin: 0 50%;
+    -o-transform: rotate(-90deg) translate(-68%, 50%);
+    -ms-transform-origin: 0 50%;
+    -ms-transform: rotate(-90deg) translate(-68%, 50%);
+    transform-origin: 0 50%;
+  font-weight: bold;
+  padding: 4px 10px 5px;}
+
+ }
+.right_block{float:right;width:97%;
+.common {.time{float:right;background: $bg1;color:$white;padding:3px 5px;font-size: 12px;position: relative}
+  .date{float:right;padding: 1px 10px;
+    margin-right: -20px;position: relative;
+    margin-left: 10px;background: $bg3;color:$white;
+  &:after{
+      content: "";
+      position: absolute;
+      right: 0px;
+      top: 100%;
+      width: 0;
+      height: 0;
+      border-top: 6px solid $bg3;
+      border-right: 10px solid transparent;
+    }
+  }
+
+  .squre{	width: 0;height: 0;border-top: 10px solid transparent;
+    border-right: 15px solid $bg1;position: absolute;
+    right: 100%;
+    top: 0px;
+    border-bottom: 10px solid transparent;
+  &:after{	width: 4px;
+    height:4px;content:"";
+    right: -12px;
+    top: -2px;
+    position: absolute;
+    @include radius(50%);
+    background: $white;
+}
+  }
+  p { color: $color2;
+    .count {
+      background: $white;
+      padding: 7px;
+      color: $black;
+      @include radius(100%);
+    }
+  }
+  .circle {
+    float: left;
+    margin-top: 8px;
+
+  .circle_con{float: left;color: $color2;
+    margin-right: 13px;} span {
+    float: left;
+    border: 1px solid $black;
+    width: 42px;
+                             margin-right: 13px;
+    border-radius: 30px;
+    height: 15px;
+  }
+    i{
+      width:17px;height:15px;background: $bg4;@include radius(50%);float:right;
+    }
+}
+&:last-child{margin-top:9px}
+}
+}
+}
+
+.message{float: right;font-size: 12px;  background: $bg1;padding:3px 20px 3px 5px;color: $white;position: relative;
+&:after{content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid $white;
+  right: 7px;
+  top: 50%;
+  margin-top: -2px;}}
+
+
+  
+  @media only screen and (min-width:1023px) {
+  .container{max-width:96%;padding:0px 2%}
+  }
